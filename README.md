@@ -44,6 +44,6 @@ RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1
 Cette règle active le moteur de réécriture et redirige les URL propres (comme http://localhost/ma-page) vers index.php, avec le paramètre p qui correspond à la valeur capturée dans l'URL. Cela permet de gérer dynamiquement les pages via le contrôleur principal (index.php).
 
 Exemple :
-URL avant réécriture : http://localhost/ma-page
+URL avant réécriture : http://localhost/index.php?p=ma-page
 
-URL après réécriture : http://localhost/index.php?p=ma-page
+URL après réécriture : http://localhost/ma-page
