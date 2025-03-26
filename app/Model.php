@@ -12,11 +12,10 @@ abstract class Model
 
     protected $connexion;
 
-    protected $dbhost = "";
-    protected $dbuser = "";
-    protected $dbpassword = "";
-    protected $dbname = "";
-
+    protected $dbhost = DB_HOST;
+    protected $dbuser = DB_USER;
+    protected $dbpassword = DB_PASSWORD;
+    protected $dbname = DB_NAME;
 
 
     public function connect()
