@@ -2,6 +2,7 @@
 
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]);
 
+require_once ROOT . "/config.php";
 require_once ROOT . "/app/Controller.php";
 require_once ROOT . "/app/Model.php";
 
