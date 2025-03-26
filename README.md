@@ -15,6 +15,9 @@ Contient les classes abstraites et les fonctionnalités de base du projet.
 ### Dossier `/controller`
 Contient les contrôleurs du projet. Dans cet exemple, le contrôleur principal est `Main.php`.
 
+### Dossier `/models`
+Contient les classes représentant les modèles du projet. Chaque modèle est responsable de l’interaction avec les données. Par exemple, un modèle `User.php` pourrait gérer l’interaction avec la table des utilisateurs dans la base de données.
+
 ### Dossier `/views`
 Contient les vues du projet. Il inclut également un layout de base situé dans `/layout/default.php`.
 
