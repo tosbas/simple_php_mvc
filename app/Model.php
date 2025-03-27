@@ -31,6 +31,7 @@ abstract class Model
 
     public function getAll()
     {
+        
         $query = $this->connexion->prepare("SELECT * FROM $this->table");
         $query->execute();
 

@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 abstract class Controller
 {
     protected string $title;
@@ -17,7 +16,9 @@ abstract class Controller
 
         ob_start();
 
-        require_once(ROOT . "/views/" . strtolower(get_class($this) . "/index.php"));
+        $class_rename = str_replace("controllers\\", "",strtolower(get_class($this)));
+
+        require_once(ROOT . "/views/" .  $class_rename . "/index.php");
 
         $content = ob_get_clean();
 
@@ -26,8 +27,9 @@ abstract class Controller
 
     public function loadModel(string $model)
     {
-        require_once ROOT . "/models/$model.php";
+        $modelClass =  "Models\\$model";
 
-        $this->$model = new $model();
+        $this->$model = new $modelClass;
+        
     }
 }

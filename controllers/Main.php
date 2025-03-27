@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers;
+
 use App\Controller;
 
 class Main extends Controller
