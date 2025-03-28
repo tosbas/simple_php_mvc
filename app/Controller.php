@@ -4,19 +4,18 @@ namespace App;
 
 abstract class Controller
 {
-    protected string $title;
-    protected string $description;
-
-    public function render(string $title, string $description, array $datas = [])
+    public function render(string $title, string $description, array $datas = [], array $scriptsJs = [], array $filesCss = [])
     {
         extract($datas);
 
-        $this->title = $title;
-        $this->description = $description;
+        $pageTitle = $title;
+        $pageDesc = $description;
+        $pageScripts = $this->loadScripts($scriptsJs);
+        $pageCssFiles = $this->loadCss($filesCss);
 
         ob_start();
 
-        $class_rename = str_replace("controllers\\", "",strtolower(get_class($this)));
+        $class_rename = str_replace("controllers\\", "", strtolower(get_class($this)));
 
         require_once(ROOT . "/views/" .  $class_rename . "/index.php");
 
@@ -30,6 +29,46 @@ abstract class Controller
         $modelClass =  "Models\\$model";
 
         $this->$model = new $modelClass;
-        
+    }
+
+    public function loadScripts(array $scriptsJs)
+    {
+
+        $autorized_types = ["async", "defer"];
+
+        $scripts = "";
+
+        foreach ($scriptsJs as $type => $scriptsArray) {
+
+            $type = (!in_array($type, $autorized_types)) ? "" : $type;
+
+            foreach ($scriptsArray as $script) {
+
+                if (ENV == "dev") {
+                    $script .= "?" . uniqid();
+                }
+
+                $scripts .= "<script $type src='/public/js/$script'></script>";
+            }
+        }
+
+        return $scripts;
+    }
+
+    public function loadCss(array $filesCss)
+    {
+
+        $files = "";
+
+        foreach ($filesCss as $file) {
+
+            if (ENV == "dev") {
+                $file .= "?" . uniqid();
+            }
+
+            $files .= "<link href='/public/css/$file' rel='stylesheet'/> ";
+        }
+
+        return $files;
     }
 }
