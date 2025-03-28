@@ -14,8 +14,12 @@ class Main extends Controller
     public function index()
     {
         $this->loadModel("MyModel");
+
         $my_datas = $this->MyModel->getAll();
 
-        $this->render("Home", "Ma description", $my_datas);
+        $my_scripts = [["main.js"]];
+        $my_css = ["main.css"];
+
+        $this->render("Home", "Ma description", $my_datas, $my_scripts, $my_css);
     }
 }
