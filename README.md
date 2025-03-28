@@ -21,6 +21,15 @@ Contient les classes représentant les modèles du projet. Chaque modèle est re
 ### Dossier `/views`
 Contient les vues du projet. Il inclut également un layout de base situé dans `/layout/default.php`.
 
+### Dossier `/public`
+Contient les fichiers accessibles publiquement, tels que les fichiers CSS, JavaScript et autres fichiers statiques.
+
+- **/css** : Contient les fichiers CSS spécifiques aux vues.
+- **/js** : Contient les fichiers JavaScript spécifiques aux vues.
+  
+Tous les fichiers publics (CSS, JS, images, etc.) doivent être placés dans ce dossier pour être accessibles via le navigateur. Actuellement, seuls les dossiers **`/css`** et **`/js`** sont présents.
+
+
 ## Fonctionnement
 
 1. Le contrôleur charge le modèle nécessaire via la méthode correspondante.
